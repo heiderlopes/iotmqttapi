@@ -19,8 +19,7 @@ public class CoisaController {
 
     @PostMapping
     public void ligar(@RequestBody Coisa coisa) {
-        /*gateway.sendToMqtt(coisa.getValor());
-        coisaService.salvar(coisa);*/
+        gateway.sendToMqtt(coisa.getValor());
         coisaService.salvar(coisa);
     }
 

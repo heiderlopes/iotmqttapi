@@ -26,8 +26,8 @@ public class IotmqttapiApplication {
 
 	private final String URL_BROKER = "tcp://iot.eclipse.org:1883";
 	private final String TOPICO = "heider";
-	private final String TOPICO_LED = "heider_led";
-	private final String TOPICO_TEMPERATURA = "heider_temperatura";
+	private final String TOPICO_LED = "ledapicon";
+	private final String TOPICO_TEMPERATURA = "temperaturaapicon";
 	private final String CHAVE_TOPICO = "mqtt_receivedTopic";
 	private final String CLIENT_ID = "clientID";
 
@@ -64,7 +64,7 @@ public class IotmqttapiApplication {
 		MqttPahoMessageHandler messageHandler =
 				new MqttPahoMessageHandler(CLIENT_ID, mqttClientFactory());
 		messageHandler.setAsync(true);
-		messageHandler.setDefaultTopic(TOPICO);
+		messageHandler.setDefaultTopic(TOPICO_LED);
 		return messageHandler;
 	}
 
@@ -82,7 +82,7 @@ public class IotmqttapiApplication {
 	public MessageProducer inbound() {
 		MqttPahoMessageDrivenChannelAdapter adapter =
 				new MqttPahoMessageDrivenChannelAdapter(URL_BROKER, CLIENT_ID,
-						TOPICO, TOPICO_LED, TOPICO_TEMPERATURA);
+						TOPICO_LED, TOPICO, TOPICO_TEMPERATURA);
 		adapter.setCompletionTimeout(5000);
 		adapter.setConverter(new DefaultPahoMessageConverter());
 		adapter.setQos(0);
