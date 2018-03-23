@@ -28,7 +28,7 @@ public class IotmqttapiApplication {
 	private final String TOPICO = "heider";
 	private final String TOPICO_LED = "ledapicon";
 	private final String TOPICO_TEMPERATURA = "temperaturaapicon";
-	private final String CHAVE_TOPICO = "mqtt_receivedTopic";
+	private final String CHAVE_TOPICO = "LM35";
 	private final String CLIENT_ID = "clientID";
 
 	private static final String MQTT_OUTBOUND_CHANNEL = "mqttOutboundChannel";
@@ -82,7 +82,7 @@ public class IotmqttapiApplication {
 	public MessageProducer inbound() {
 		MqttPahoMessageDrivenChannelAdapter adapter =
 				new MqttPahoMessageDrivenChannelAdapter(URL_BROKER, CLIENT_ID,
-						TOPICO_LED, TOPICO, TOPICO_TEMPERATURA);
+						TOPICO_TEMPERATURA, TOPICO, TOPICO_TEMPERATURA);
 		adapter.setCompletionTimeout(5000);
 		adapter.setConverter(new DefaultPahoMessageConverter());
 		adapter.setQos(0);
